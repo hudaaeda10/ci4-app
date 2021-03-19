@@ -9,17 +9,34 @@ class Pages extends BaseController
         $data = [
             'title' => 'Home | WebProgrammingSTTNF'
         ];
-        echo view('layout/header', $data);
-        echo view('pages/home');
-        echo view('layout/footer');
+        return view('pages/home', $data);
     }
     public function about()
     {
         $data = [
             'title' => 'About Me'
         ];
-        echo view('layout/header', $data);
-        return view('pages/about');
-        echo view('layout/footer');
+        return view('pages/about', $data);
+    }
+
+    public function contact()
+    {
+        $data = [
+            'title' => 'Contact Us',
+            'alamat' => [
+                [
+                    'tipe' => 'Rumah',
+                    'alamat' => 'Jln. Raya No.123',
+                    'kota' => 'Bandung'
+                ],
+                [
+                    'tipe' => 'Kantor',
+                    'alamat' => 'Jln. Kecil No. 211',
+                    'kota' => 'Bandung'
+                ]
+            ]
+        ];
+
+        return view('pages/contact', $data);
     }
 }
