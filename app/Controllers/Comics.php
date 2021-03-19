@@ -18,9 +18,6 @@ class Comics extends BaseController
             'title' => 'List Comics',
             'comic' => $this->comicModel->getComic()
         ];
-        if (empty($data['comic'])) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Comic Title ' . $slug . 'Not Found');
-        }
         return view('comics/index', $data);
     }
 
@@ -30,19 +27,39 @@ class Comics extends BaseController
             'title' => 'Detail Comic',
             'comic' => $this->comicModel->getComic($slug)
         ];
+        if (empty($data['comic'])) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Comic Title ' . $slug . 'Not Found');
+        }
         return view('comics/detail', $data);
     }
 
     public function create()
     {
+        // session();
         $data = [
-            'title' => 'Create New Comic'
+            'title' => 'Create New Comic',
+            'validation' => \Config\Services::validation()
         ];
         return view('comics/create', $data);
     }
 
     public function save()
     {
+        if (!$this->validate([
+            // 'title' => 'required|is_unique[comics.title]'            contoh yang sederhana
+            'title' => [
+                'rules' => 'required|is_unique[comics.title]',
+                'errors' => [
+                    'required' => '{field} Comic Must Be Fill In',
+                    'is_unique' => '{field} Comic Must Be Unique'
+                ]
+            ],
+            'author' => 'required',
+            'publisher' => 'required',
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('/comics/create')->withInput()->with('validation', $validation);
+        }
         $slug = url_title($this->request->getVar('title'), '-', true);
         $this->comicModel->save([
             'title' => $this->request->getVar('title'),
