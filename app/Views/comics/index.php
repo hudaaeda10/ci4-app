@@ -4,7 +4,13 @@
 <div class="container">
     <div class="row">
         <div class="col-lg">
+            <a href="/comics/create" class="btn btn-primary my-3"> Add New Comic </a>
             <h2 class="mt-3">List Comics</h2>
+            <?php if (session()->getFlashdata('message')) : ?>
+                <div class="alert alert-success" role="alert">
+                    <?= session()->getFlashdata('message'); ?>
+                </div>
+            <?php endif; ?>
             <table class="table">
                 <thead>
                     <tr>
