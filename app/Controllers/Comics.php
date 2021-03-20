@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use CodeIgniter\HTTP\IncomingRequest;
+
 use App\Models\ComicModel;
 
 class Comics extends BaseController
