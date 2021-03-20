@@ -16,7 +16,7 @@
                     <a class="nav-link" href="/pages/contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/comics/index">Comics</a>
+                    <a class="nav-link" href="/comics">Comics</a>
                 </li>
             </ul>
         </div>
