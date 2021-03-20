@@ -18,6 +18,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/comics">Comics</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/human">Humans</a>
+                </li>
             </ul>
         </div>
     </div>

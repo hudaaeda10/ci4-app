@@ -36,6 +36,7 @@ $routes->get('/comics/edit/(:segment)', 'Comics::edit/$1');
 $routes->get('/comics/create', 'Comics::create');
 $routes->delete('/comics/(:num)', 'Comics::delete/$1');
 $routes->get('/comics/(:any)', 'Comics::detail/$1');
+$routes->get('/human/(:any)', 'Human::detail/$1');
 
 /*
  * --------------------------------------------------------------------
